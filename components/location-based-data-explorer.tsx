@@ -17,6 +17,7 @@ import FloodRiskDisplay from "@/components/flood-risk-display"
 import ManagementPlansDisplay from "@/components/management-plans-display"
 import FlashFloodPredictionDisplay from "@/components/flash-flood-prediction-display"
 import AlertSystemManager from "@/components/alert-system-manager"
+import EvacuationMap from "@/components/evacuation-map"
 
 // Konum tipi tanımı
 interface Location {
@@ -424,9 +425,10 @@ export default function LocationBasedDataExplorer() {
 
         <CardContent>
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid grid-cols-6 mb-4">
+            <TabsList className="grid grid-cols-7 mb-4">
               <TabsTrigger value="flood">Sel Riski</TabsTrigger>
               <TabsTrigger value="flash-flood">Ani Su Baskını</TabsTrigger>
+              <TabsTrigger value="evacuation">Tahliye Rotaları</TabsTrigger>
               <TabsTrigger value="alerts">Uyarı Sistemi</TabsTrigger>
               <TabsTrigger value="weather">Hava Durumu</TabsTrigger>
               <TabsTrigger value="plans">Yönetim Planları</TabsTrigger>
@@ -461,6 +463,22 @@ export default function LocationBasedDataExplorer() {
               ) : (
                 <div className="text-center py-8 text-gray-500">
                   Ani su baskını tahminlerini görüntülemek için lütfen konum verisi sağlayın
+                </div>
+              )}
+            </TabsContent>
+
+            <TabsContent value="evacuation" className="mt-0">
+              {loading ? (
+                <div className="space-y-4">
+                  <Skeleton className="h-8 w-full" />
+                  <Skeleton className="h-24 w-full" />
+                  <Skeleton className="h-32 w-full" />
+                </div>
+              ) : location ? (
+                <EvacuationMap location={location} locationName={locationName} />
+              ) : (
+                <div className="text-center py-8 text-gray-500">
+                  Tahliye rotalarını görüntülemek için lütfen konum verisi sağlayın
                 </div>
               )}
             </TabsContent>
