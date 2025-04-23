@@ -18,6 +18,7 @@ import ManagementPlansDisplay from "@/components/management-plans-display"
 import FlashFloodPredictionDisplay from "@/components/flash-flood-prediction-display"
 import AlertSystemManager from "@/components/alert-system-manager"
 import EvacuationMap from "@/components/evacuation-map"
+import HistoricalFloodEventsTable from "@/components/historical-flood-events-table"
 
 // Konum tipi tanımı
 interface Location {
@@ -324,15 +325,19 @@ export default function LocationBasedDataExplorer() {
             {loading ? (
               <Skeleton className="h-4 w-full" />
             ) : location ? (
+              (
+                <div className="flex flex-col sm:flex-row sm:items-center gap  />
+            ) : location ? (
               <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm">
                 <span className="flex items-center">
-                  <Compass className="mr-1 h-4 w-4 text-blue-500" />
+                  <Compass className="mr-1 h-4 w-4 text-blue-500" />\
                   Enlem: {location.latitude.toFixed(6)}, Boylam: {location.longitude.toFixed(6)}
                 </span>
                 {!showManualInput && (
                   <span className="text-gray-500 text-xs">(Doğruluk: ±{Math.round(location.accuracy)} metre)</span>
                 )}
               </div>
+              )
             ) : (
               "Konum verisi mevcut değil"
             )}
@@ -425,10 +430,11 @@ export default function LocationBasedDataExplorer() {
 
         <CardContent>
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid grid-cols-7 mb-4">
+            <TabsList className="grid grid-cols-8 mb-4">
               <TabsTrigger value="flood">Sel Riski</TabsTrigger>
               <TabsTrigger value="flash-flood">Ani Su Baskını</TabsTrigger>
               <TabsTrigger value="evacuation">Tahliye Rotaları</TabsTrigger>
+              <TabsTrigger value="historical">Geçmiş Olaylar</TabsTrigger>
               <TabsTrigger value="alerts">Uyarı Sistemi</TabsTrigger>
               <TabsTrigger value="weather">Hava Durumu</TabsTrigger>
               <TabsTrigger value="plans">Yönetim Planları</TabsTrigger>
@@ -479,6 +485,22 @@ export default function LocationBasedDataExplorer() {
               ) : (
                 <div className="text-center py-8 text-gray-500">
                   Tahliye rotalarını görüntülemek için lütfen konum verisi sağlayın
+                </div>
+              )}
+            </TabsContent>
+
+            <TabsContent value="historical" className="mt-0">
+              {loading ? (
+                <div className="space-y-4">
+                  <Skeleton className="h-8 w-full" />
+                  <Skeleton className="h-24 w-full" />
+                  <Skeleton className="h-32 w-full" />
+                </div>
+              ) : location ? (
+                <HistoricalFloodEventsTable location={location} locationName={locationName} />
+              ) : (
+                <div className="text-center py-8 text-gray-500">
+                  Geçmiş ani su baskını olaylarını görüntülemek için lütfen konum verisi sağlayın
                 </div>
               )}
             </TabsContent>
