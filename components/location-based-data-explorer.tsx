@@ -325,19 +325,15 @@ export default function LocationBasedDataExplorer() {
             {loading ? (
               <Skeleton className="h-4 w-full" />
             ) : location ? (
-              (
-                <div className="flex flex-col sm:flex-row sm:items-center gap  />
-            ) : location ? (
               <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm">
                 <span className="flex items-center">
-                  <Compass className="mr-1 h-4 w-4 text-blue-500" />\
+                  <Compass className="mr-1 h-4 w-4 text-blue-500" />
                   Enlem: {location.latitude.toFixed(6)}, Boylam: {location.longitude.toFixed(6)}
                 </span>
                 {!showManualInput && (
                   <span className="text-gray-500 text-xs">(Doğruluk: ±{Math.round(location.accuracy)} metre)</span>
                 )}
               </div>
-              )
             ) : (
               "Konum verisi mevcut değil"
             )}
