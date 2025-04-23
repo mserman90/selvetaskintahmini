@@ -438,8 +438,9 @@ export default function FloodRiskDisplay({ location }: FloodRiskDisplayProps) {
                 </p>
                 <p className="text-sm text-gray-600">
                   Bu değerlendirmeler, Tarım ve Orman Bakanlığı Su Yönetimi Genel Müdürlüğü tarafından hazırlanan Taşkın
-                  Yönetim Planları'ndaki veriler ve metodolojiler kullanılarak yapılmaktadır. Daha detaylı bilgi için
-                  "Yönetim Planları" sekmesini inceleyebilirsiniz.
+                  Yönetim Planları'ndaki veriler ve metodolojiler kullanılarak yapılmaktadır. Daha detaylı ve güncel
+                  tehlike haritaları için "Yönetim Planları" sekmesindeki USBS Vatandaş Portalı bağlantısını
+                  kullanabilirsiniz.
                 </p>
               </div>
 
@@ -448,11 +449,16 @@ export default function FloodRiskDisplay({ location }: FloodRiskDisplayProps) {
                 <AlertTitle>Bilgilendirme</AlertTitle>
                 <AlertDescription className="text-xs">
                   Taşkın tehlike haritaları, DSİ ve ilgili kurumlardan alınan veriler doğrultusunda hazırlanmıştır. Daha
-                  detaylı bilgi için{" "}
-                  <a href="https://dsi.gov.tr" target="_blank" rel="noopener noreferrer" className="underline">
-                    DSİ
+                  detaylı ve güncel bilgi için{" "}
+                  <a
+                    href="https://usbs.tarimorman.gov.tr/usbs/VatandasGirisi/Index"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline"
+                  >
+                    USBS Vatandaş Portalı
                   </a>{" "}
-                  web sitesini ziyaret edebilirsiniz.
+                  üzerinden tehlike haritalarına erişebilirsiniz.
                 </AlertDescription>
               </Alert>
             </CardContent>

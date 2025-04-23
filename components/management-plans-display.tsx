@@ -76,6 +76,65 @@ export default function ManagementPlansDisplay() {
         </AlertDescription>
       </Alert>
 
+      {/* USBS Tehlike Haritaları Erişimi - YENİ EKLENEN BÖLÜM */}
+      <Card className="border-2 border-blue-300">
+        <CardHeader className="bg-blue-50">
+          <CardTitle className="text-lg flex items-center">
+            <MapPin className="h-5 w-5 mr-2 text-blue-600" />
+            USBS Taşkın Tehlike Haritaları
+          </CardTitle>
+          <CardDescription>Ulusal Su Bilgi Sistemi üzerinden güncel taşkın tehlike haritalarına erişin</CardDescription>
+        </CardHeader>
+        <CardContent className="pt-4">
+          <div className="space-y-4">
+            <div className="flex items-center p-3 bg-blue-50 rounded-lg">
+              <Info className="h-10 w-10 text-blue-600 mr-3 flex-shrink-0" />
+              <div className="text-sm">
+                <p className="font-medium mb-1">USBS Vatandaş Portalı, taşkın tehlike haritalarına erişim sağlar:</p>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>500 yıllık taşkın tekerrür debili tehlike haritaları</li>
+                  <li>Taşkın risk haritaları ve analizleri</li>
+                  <li>Havza bazlı taşkın yönetim planları</li>
+                  <li>Taşkın erken uyarı sistemleri</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="rounded-lg border overflow-hidden">
+              <div className="bg-gray-100 p-4 text-center">
+                <img
+                  src="/placeholder.svg?height=200&width=400&text=USBS+Taşkın+Tehlike+Haritaları+Örneği"
+                  alt="USBS Taşkın Tehlike Haritaları Örneği"
+                  className="mx-auto rounded-lg border border-gray-300"
+                />
+              </div>
+              <div className="p-4 bg-white">
+                <h3 className="font-medium text-sm mb-2">Tehlike Haritalarına Erişim Adımları:</h3>
+                <ol className="list-decimal pl-5 text-sm space-y-1">
+                  <li>USBS Vatandaş Portalına giriş yapın</li>
+                  <li>"Taşkın Bilgi Sistemi" menüsünü seçin</li>
+                  <li>"Taşkın Tehlike Haritaları" bölümüne gidin</li>
+                  <li>İlgilendiğiniz bölgeyi harita üzerinde seçin veya arama yapın</li>
+                  <li>Görüntülemek istediğiniz tehlike haritası katmanını seçin</li>
+                </ol>
+              </div>
+            </div>
+
+            <Button className="w-full" asChild>
+              <a
+                href="https://usbs.tarimorman.gov.tr/usbs/VatandasGirisi/Index"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center"
+              >
+                <ExternalLink className="h-4 w-4 mr-2" />
+                USBS Vatandaş Portalına Git
+              </a>
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+
       <div className="grid grid-cols-1 gap-4">
         {managementPlans.map((plan) => (
           <Card key={plan.id} className="overflow-hidden">
